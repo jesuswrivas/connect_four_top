@@ -5,6 +5,7 @@ describe Board do
 
 subject(:board){Board.new}
 let(:player_1){instance_double("Player", name: "jesus", mark: "green")}
+let(:player_2){instance_double("Player", name: "yesi", mark: "red")}
 
     describe "#make_move" do
         context "When making a first move on column 1" do
@@ -56,6 +57,39 @@ let(:player_1){instance_double("Player", name: "jesus", mark: "green")}
             end    
         end
     end
+
+
+    describe "#win_check" do
+       
+
+        #The win_check function checks if a player won (returns 2), if the game still on (returns 1) or if its a draw (returns 0)
+            
+            
+            context "When there is a winning condition: Chips 2 to 5 in row 2" do
+                subject(:board){Board.new([[],[player_1, player_1],[player_2,player_1],[player_2,player_1],[player_2,player_1],[player_2,player_2],[]])}
+                it "returns 2" do
+                    expect(board.win_check).to eq(2)                    
+                end
+            end
+            context "When there is a winning condition: Chips 1 to 4 in row 6"  do
+                xit "returns 2" do
+                    
+                end
+            end
+            context "When there is no winning condition. Board empty" do
+                xit "returns 1" do
+                    expect(board.valid_move?(7)).to eq(false)
+                end
+                
+            end
+            context "When there is no winning condition. Board full"do
+              
+                xit "returns 0" do
+                   
+                end    
+            end
+        end
+
 
 
 end
