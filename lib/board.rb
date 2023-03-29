@@ -2,11 +2,12 @@ require_relative "player.rb"
 
 class Board
 
-attr_accessor :board, :players, :last_move
+    attr_accessor :board, :players, :last_move
 
-    def initialize(board = [[],[],[],[],[],[],[]], players = [])
+    def initialize(board = [[],[],[],[],[],[],[]], players = [], last_move =[])
         @board = board
         @players = players
+         #"@last_move" contains the piece (player_1 for example), and [column,]
         @last_move = [[],[]]
     end
 
@@ -22,21 +23,25 @@ attr_accessor :board, :players, :last_move
     end
 
 
-    # def win_check
+    def win_check
 
-    #     #Checking the columns
-    #     for i in range(1..7) do
-    #         return true if check_column(i)
-    #     end
+        #Checking the columns for @last_move
+        return 2 if check_column(self.last_move[1][0])
 
-    #     #Checking the rows
-    #     for j in range(1..6) do
-    #         return true if check_row(j)
-    #     endcheck_last_move
-    # end
+        #Checking the rows
+        return 2 if check_row(self.last_move[1][1])
+
+        #Checking for a draw
+
+        if self.last_move[1][1] == 6
+            return 0 if check_draw
+        end
+
+        return 1
+
+    end
 
 
- 
     def contains_pattern?(array, pattern)
         array.each_cons(pattern.size).any? { |aux_array| aux_array == pattern }
     end
@@ -59,6 +64,7 @@ attr_accessor :board, :players, :last_move
 
         false
     end
+
 
     def check_column(integer)
         win_condition_array = []
@@ -90,27 +96,24 @@ attr_accessor :board, :players, :last_move
     end
 
     def update_last_move(column)
-        @last_move[0] = @board[column][-1]
-        @last_move[1] = [column, @board[column].length-1]
-    
+        self.last_move[0] = self.board[column-1][-1]
+        self.last_move[1] = [column, self.board[column-1].length]
+        p self.last_move
     end
 
         
 
 end
 
-jesus = Player.new("jesus","green")
-yesi = Player.new("yesi", "red")
-newBoard = Board.new([[],[],[],[],[],[],[]], [jesus,yesi])
-newBoard.make_move(1, yesi)
-newBoard.make_move(1, yesi)
-newBoard.make_move(2, jesus)
-newBoard.make_move(2, yesi)
-newBoard.make_move(3, jesus)
-newBoard.make_move(7, yesi)
-newBoard.make_move(4, jesus)
-newBoard.make_move(7, yesi)
-newBoard.make_move(5, jesus)
-newBoard.update_last_move(5)
-p newBoard
+p1 = Player.new("p1","green")
+p2 = Player.new("p2", "red")
+newBoard = Board.new([[],[p1],[p2,p1],[p2,p1],[p2,p1],[p2,p2],[]], [p1,p2])
+newBoard.make_move(1, p2)
+newBoard.make_move(2, p1)
+newBoard.update_last_move(2)
+
+newBoard
+
+p newBoard.win_check
+
 
