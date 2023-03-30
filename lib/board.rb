@@ -45,6 +45,14 @@ class Board
     end
 
     
+    
+
+
+
+
+
+
+
 
     def contains_pattern?(array, pattern)
         array.each_cons(pattern.size).any? { |aux_array| aux_array == pattern }
@@ -105,21 +113,6 @@ class Board
     end
 
 
-    # def show_board
-
-    #     puts ""
-    #     puts ""
-    #     puts " #{self.board[0][5]} | #{self.board[1][5]} | #{self.board[2][5]} | #{self.board[4][5]} | #{self.board[4][5]} | #{self.board[5][5]} | #{self.board[6][5]} |"
-    #     puts " #{self.board[0][4]} | #{self.board[1][4]} | #{self.board[2][4]} | #{self.board[4][4]} | #{self.board[4][4]} | #{self.board[5][4]} | #{self.board[6][4]} |"
-    #     puts " #{self.board[0][3]} | #{self.board[1][3]} | #{self.board[2][3]} | #{self.board[4][3]} | #{self.board[4][3]} | #{self.board[5][3]} | #{self.board[6][3]} |"
-    #     puts " #{self.board[0][2]} | #{self.board[1][2]} | #{self.board[2][2]} | #{self.board[3][2]} | #{self.board[4][2]} | #{self.board[5][2]} | #{self.board[6][2]} |"
-    #     puts " #{self.board[0][1]} | #{self.board[1][1]} | #{self.board[2][1]} | #{self.board[3][1]} | #{self.board[4][1]} | #{self.board[5][1]} | #{self.board[6][1]} |"
-    #     puts " #{self.board[0][0]} | #{self.board[1][0]} | #{self.board[2][0]} | #{self.board[3][0]} | #{self.board[4][0]} | #{self.board[5][0]} | #{self.board[6][0]} |"
-    #     puts "-"*28
-    #     puts " 1   2   3   4   5   6   7"
-    #     puts ""
-
-    # end
     def show_board
         puts ""
         puts ""

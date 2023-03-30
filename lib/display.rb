@@ -1,4 +1,4 @@
-class Display
+module Display
 
 
 
@@ -10,20 +10,50 @@ class Display
         end
       end
 
+      def game_title
+        puts "\n\n\n"
+        puts "        _____                             _             ______               "
+        puts "       /  __ \\                           | |            |  ___|              "
+        puts "       | /  \\/ ___  _ __  _ __   ___  ___| |_   ______  | |_ ___  _   _ _ __ "
+        puts "       | |    / _ \\| '_ \\| '_ \\ / _ \\/ __| __| |______| |  _/ _ \\| | | | '__|"
+        puts "       | \\__/\\ (_) | | | | | | |  __/ (__| |_           | || (_) | |_| | |   "
+        puts "        \\____/\\___/|_| |_|_| |_|\\___|\\___|\\__|          \\_| \\___/ \\__,_|_|   "
+        puts "\n\n\n"
+    end
 
-    def welcome_game
-        clear_screen
-        puts ""
-        puts "Welcome to the CONNECT-FOUR"
-        puts ""
-        puts "The rules of the game are simple, a board game with 7 colums and 6 rowns will be shown "
-        puts "The player that gets four pieces in a row wins!"
-        puts ""
-        puts "First, let's meet the players!"
-        puts ""
 
+    def welcome_message
+        puts ""
+        puts ""
+        puts ""
+        puts ""
+        puts ""
+        puts ""
+        puts "         The Odin Project - Ruby Route"
+        puts ""
+        puts "         Press any key to continue"
+        puts ""
 
     end
+
+
+
+    def style_board
+        puts ""
+        puts ""
+        puts ""
+        puts "            |    |    |    |    |    |"
+        puts "            |    |    |    |    |    |"
+        puts "            |    |    |    |    |    |"
+        puts "            |    |    |    |    |    |"
+        puts "            | \u{1F534} | \u{1F534} | \u{1F534} | \u{1F534} | " + "\u{1F535}" + " |"
+        puts "         " + "\u{1F535}" + " | \u{1F534} | " + "\u{1F535}" + " | " + "\u{1F535}" + " | " + "\u{1F535}" + " | " + "\u{1F535}" + " |"
+        puts "        ------------------------------"
+        puts "           1   2   3   4   5   6   7  "
+      end
+      
+
+    
 
     def good_bye_message
         puts ""
@@ -41,16 +71,5 @@ class Display
         end
         return move.to_i
     end
-
-
-
-
-
-
-
-
-
-
-
 
 end
