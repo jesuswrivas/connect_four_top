@@ -11,6 +11,8 @@ class Board
         @last_move = [[],[]]
     end
 
+   
+
     def make_move(integer, player)
     #Integer needs to be between 1 and 7 (there are 7 columns). We will error check on the Display.ask_input function
         @board[integer-1] << player
@@ -21,6 +23,7 @@ class Board
         return false if @board[integer - 1].length == 6
         true
     end
+
 
 
     def win_check
@@ -41,6 +44,7 @@ class Board
 
     end
 
+    
 
     def contains_pattern?(array, pattern)
         array.each_cons(pattern.size).any? { |aux_array| aux_array == pattern }
@@ -98,10 +102,37 @@ class Board
     def update_last_move(column)
         self.last_move[0] = self.board[column-1][-1]
         self.last_move[1] = [column, self.board[column-1].length]
-        p self.last_move
     end
 
-        
+
+    # def show_board
+
+    #     puts ""
+    #     puts ""
+    #     puts " #{self.board[0][5]} | #{self.board[1][5]} | #{self.board[2][5]} | #{self.board[4][5]} | #{self.board[4][5]} | #{self.board[5][5]} | #{self.board[6][5]} |"
+    #     puts " #{self.board[0][4]} | #{self.board[1][4]} | #{self.board[2][4]} | #{self.board[4][4]} | #{self.board[4][4]} | #{self.board[5][4]} | #{self.board[6][4]} |"
+    #     puts " #{self.board[0][3]} | #{self.board[1][3]} | #{self.board[2][3]} | #{self.board[4][3]} | #{self.board[4][3]} | #{self.board[5][3]} | #{self.board[6][3]} |"
+    #     puts " #{self.board[0][2]} | #{self.board[1][2]} | #{self.board[2][2]} | #{self.board[3][2]} | #{self.board[4][2]} | #{self.board[5][2]} | #{self.board[6][2]} |"
+    #     puts " #{self.board[0][1]} | #{self.board[1][1]} | #{self.board[2][1]} | #{self.board[3][1]} | #{self.board[4][1]} | #{self.board[5][1]} | #{self.board[6][1]} |"
+    #     puts " #{self.board[0][0]} | #{self.board[1][0]} | #{self.board[2][0]} | #{self.board[3][0]} | #{self.board[4][0]} | #{self.board[5][0]} | #{self.board[6][0]} |"
+    #     puts "-"*28
+    #     puts " 1   2   3   4   5   6   7"
+    #     puts ""
+
+    # end
+    def show_board
+        puts ""
+        puts ""
+        puts "#{self.board[0][5] || '  '}|#{self.board[1][5] || '  '}|#{self.board[2][5] || '  '}|#{self.board[3][5] || '  '}|#{self.board[4][5] || '  '}|#{self.board[5][5] || '  '}|#{self.board[6][5] || '  '}|"
+        puts "#{self.board[0][4] || '  '}|#{self.board[1][4] || '  '}|#{self.board[2][4] || '  '}|#{self.board[3][4] || '  '}|#{self.board[4][4] || '  '}|#{self.board[5][4] || '  '}|#{self.board[6][4] || '  '}|"
+        puts "#{self.board[0][3] || '  '}|#{self.board[1][3] || '  '}|#{self.board[2][3] || '  '}|#{self.board[3][3] || '  '}|#{self.board[4][3] || '  '}|#{self.board[5][3] || '  '}|#{self.board[6][3] || '  '}|"
+        puts "#{self.board[0][2] || '  '}|#{self.board[1][2] || '  '}|#{self.board[2][2] || '  '}|#{self.board[3][2] || '  '}|#{self.board[4][2] || '  '}|#{self.board[5][2] || '  '}|#{self.board[6][2] || '  '}|"
+        puts "#{self.board[0][1] || '  '}|#{self.board[1][1] || '  '}|#{self.board[2][1] || '  '}|#{self.board[3][1] || '  '}|#{self.board[4][1] || '  '}|#{self.board[5][1] || '  '}|#{self.board[6][1] || '  '}|"
+        puts "#{self.board[0][0] || '  '}|#{self.board[1][0] || '  '}|#{self.board[2][0] || '  '}|#{self.board[3][0] || '  '}|#{self.board[4][0] || '  '}|#{self.board[5][0] || '  '}|#{self.board[6][0] || '  '}|"
+        puts "-" * 28
+        puts " 1   2   3   4   5   6   7"
+        puts ""
+      end
 
 end
 
@@ -112,8 +143,8 @@ newBoard.make_move(1, p2)
 newBoard.make_move(2, p1)
 newBoard.update_last_move(2)
 
-newBoard
 
-p newBoard.win_check
+
+newBoard.show_board
 
 
