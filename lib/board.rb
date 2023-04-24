@@ -1,7 +1,8 @@
 require_relative "player.rb"
 
-class Board
 
+class Board
+    
     attr_accessor :board, :players, :last_move
 
     def initialize(board = [[],[],[],[],[],[],[]], players = [], last_move =[])
@@ -11,11 +12,10 @@ class Board
         @last_move = [[],[]]
     end
 
-   
-
+  
     def make_move(integer, player)
     #Integer needs to be between 1 and 7 (there are 7 columns). We will error check on the Display.ask_input function
-        @board[integer-1] << player
+        @board[integer-1] << player 
     end
 
     def valid_move?(integer)
@@ -23,7 +23,6 @@ class Board
         return false if @board[integer - 1].length == 6
         true
     end
-
 
 
     def win_check
@@ -43,16 +42,7 @@ class Board
         return 1
 
     end
-
-    
-    
-
-
-
-
-
-
-
+   
 
     def contains_pattern?(array, pattern)
         array.each_cons(pattern.size).any? { |aux_array| aux_array == pattern }
@@ -112,7 +102,7 @@ class Board
         self.last_move[1] = [column, self.board[column-1].length]
     end
 
-
+ 
     def show_board
         puts ""
         puts ""
@@ -129,15 +119,5 @@ class Board
 
 end
 
-p1 = Player.new("p1","green")
-p2 = Player.new("p2", "red")
-newBoard = Board.new([[],[p1],[p2,p1],[p2,p1],[p2,p1],[p2,p2],[]], [p1,p2])
-newBoard.make_move(1, p2)
-newBoard.make_move(2, p1)
-newBoard.update_last_move(2)
-
-
-
-newBoard.show_board
 
 

@@ -53,6 +53,14 @@ module Display
       end
       
 
+
+    def game_initialization
+      clear_screen
+      game_title
+      style_board
+      welcome_message
+      gets.chomp
+    end
     
 
     def good_bye_message
@@ -61,15 +69,47 @@ module Display
         puts ""
     end
 
-    def ask_input(player)
-        puts "#{player}, make your move!"
+    def ask_input(player, board)
+        puts "#{player.name}, make your move!"
         move = gets.chomp.to_i
-        until move.between?(1,7) && valid_move?(move) do
+        until move.between?(1,7) && board.valid_move?(move) do
             show_board
             puts "Invalid move!. Try again..."
             move = gets.chomp.to_i
         end
         return move.to_i
     end
+
+
+
+    def ask_player_name(player_number)
+      puts "Player #{player_number}, whats your name? Please, type a single word"
+      name = gets.chomp
+      until name.match?( /\A\w+\z/ ) do
+          puts "Remember to type a single word"
+          name = gets.chomp
+      end
+
+      return name
+      
+    end
+
+
+    def ask_player_color(player_number)
+      colors_available = ["red", "blue", "yellow", "purple","green"]
+      puts "#{player_number}, choose your color. Please, choose one of the following:"
+      puts "red, blue, yellow, purple or green"
+      color = gets.chomp
+      until colors_available.include?(color.downcase) do
+          puts "Please, pick a valid color"
+          puts "red, blue, yellow, purple or green"
+          color = gets.chomp
+      end
+
+      return color
+      
+    end
+
+
 
 end
