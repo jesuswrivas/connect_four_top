@@ -37,9 +37,13 @@ newBoard = Board.new
 #We create the two players 
 newGame.create_players(newBoard)
 
-until newBoard.win_check == 1
+while true
     #Player 1 makes a move
     newGame.play_round(newBoard, newBoard.players[0])
+    break if newBoard.win_check == 2
+ 
     #Player 2 makes a move
     newGame.play_round(newBoard, newBoard.players[1])
+    break if newBoard.win_check == 2
 end
+    newBoard.show_board

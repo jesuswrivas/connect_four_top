@@ -16,6 +16,7 @@ class Board
     def make_move(integer, player)
     #Integer needs to be between 1 and 7 (there are 7 columns). We will error check on the Display.ask_input function
         @board[integer-1] << player 
+        update_last_move(integer)
     end
 
     def valid_move?(integer)
@@ -26,7 +27,10 @@ class Board
 
 
     def win_check
-
+        if @board.all? { |sub_array| sub_array.empty? }
+            return 1
+        end
+        
         #Checking the columns for @last_move
         return 2 if check_column(self.last_move[1][0])
 
@@ -74,7 +78,7 @@ class Board
         pattern_match_player_2 = Array.new(4,@players[1])
         
         for i in (0..5) do
-            win_condition_array << @board[i]
+            win_condition_array << @board[integer-1][i]
         end
 
         if contains_pattern?(win_condition_array,pattern_match_player_1) || contains_pattern?(win_condition_array, pattern_match_player_2)
@@ -113,11 +117,23 @@ class Board
         puts "#{self.board[0][1] || '  '}|#{self.board[1][1] || '  '}|#{self.board[2][1] || '  '}|#{self.board[3][1] || '  '}|#{self.board[4][1] || '  '}|#{self.board[5][1] || '  '}|#{self.board[6][1] || '  '}|"
         puts "#{self.board[0][0] || '  '}|#{self.board[1][0] || '  '}|#{self.board[2][0] || '  '}|#{self.board[3][0] || '  '}|#{self.board[4][0] || '  '}|#{self.board[5][0] || '  '}|#{self.board[6][0] || '  '}|"
         puts "-" * 28
-        puts " 1   2   3   4   5   6   7"
+        puts " 1  2  3  4  5  6  7"
         puts ""
       end
 
 end
+
+
+# p1 = Player.new("p1","green")
+# p2 = Player.new("p2", "red")
+
+# newBoard = Board.new([[p1,p1,p1,p2],[p1,p1,p2],[p1,p2],[],[],[],[]], [p1,p2])
+# newBoard.make_move(7,p2)
+# newBoard.make_move(7,p2)
+# newBoard.make_move(4,p1)
+# p newBoard.last_move
+# newBoard.show_board
+# p newBoard.win_check
 
 
 
