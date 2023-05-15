@@ -101,6 +101,10 @@ class Board
         false
     end
 
+
+
+
+
     def update_last_move(column)
         self.last_move[0] = self.board[column-1][-1]
         self.last_move[1] = [column, self.board[column-1].length]
@@ -119,7 +123,12 @@ class Board
         puts "-" * 28
         puts " 1  2  3  4  5  6  7"
         puts ""
-      end
+    end
+
+    def reset_board
+        @board = [[],[],[],[],[],[],[]]
+        @last_move = [[],[]]
+    end
 
 end
 
