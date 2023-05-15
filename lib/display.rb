@@ -73,14 +73,12 @@ module Display
         puts "#{player.name}, make your move!"
         move = gets.chomp.to_i
         until move.between?(1,7) && board.valid_move?(move) do
-            show_board
+            board.show_board
             puts "Invalid move!. Try again..."
             move = gets.chomp.to_i
         end
         return move.to_i
     end
-
-
 
     def ask_player_name(player_number)
       puts "Player #{player_number}, whats your name? Please, type a single word"
@@ -121,6 +119,21 @@ module Display
       puts "Its a draw!"
     end
 
+    def ask_play_again
+      puts ""
+      puts "Do you want to play again? y/n"
+      puts ""
+      answer = gets.chomp.downcase
+      until answer == "y" or answer == "n"
+          puts "Remember type only 'Y' or 'N'"
+          answer = gets.chomp.downcase
+      end
+      return answer
+  end
+
 
 
 end
+
+
+
