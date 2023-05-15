@@ -110,6 +110,17 @@ module Display
       
     end
 
+    def winner_message(board)
+    #We need an instance of board class.  The instance variable last move has the last move that
+    #was played, we will use this to show who is the winner
+      puts "Congratulations! #{board.last_move[0].name} you won!"
+
+    end
+
+    def tie_message
+      puts "Its a draw!"
+    end
+
 
 
 end

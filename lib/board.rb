@@ -92,7 +92,7 @@ class Board
 
     def check_draw
         draw_condition_array = []
-        for i in range(0..6) do
+        for i in (0..6) do
             draw_condition_array <<  @board[i][5] unless @board[i][5].nil?
         end
 
